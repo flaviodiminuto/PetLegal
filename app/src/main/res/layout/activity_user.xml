@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.flavio.android.petlegal.view.User">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fundoFoto"
+        android:layout_width="0dp"
+        android:layout_height="274dp"
+        android:background="#F4A460"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgFotoUser"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/petum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnPerfil"
+        android:layout_width="156dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="#F4A460"
+        app:layout_constraintStart_toStartOf="@+id/viewPager"
+        app:layout_constraintTop_toTopOf="@+id/viewPager" />
+
+    <TextView
+        android:id="@+id/txtPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Perfil"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPerfil"
+        app:layout_constraintEnd_toEndOf="@+id/btnPerfil"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="@+id/btnPerfil"
+        app:layout_constraintTop_toTopOf="@+id/btnPerfil"
+        app:layout_constraintVertical_bias="0.458" />
+
+    <ImageButton
+        android:id="@+id/btnCompras"
+        android:layout_width="156dp"
+        android:layout_height="113dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="12dp"
+        android:background="#F4A460"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager"
+        app:layout_constraintStart_toStartOf="@+id/viewPager" />
+
+    <TextView
+        android:id="@+id/txtCompras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Compras"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCompras"
+        app:layout_constraintEnd_toEndOf="@+id/btnCompras"
+        app:layout_constraintStart_toStartOf="@+id/btnCompras"
+        app:layout_constraintTop_toTopOf="@+id/btnCompras" />
+
+    <ImageButton
+        android:id="@+id/btnPets"
+        android:layout_width="156dp"
+        android:layout_height="113dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
+        android:background="#F4A460"
+        app:layout_constraintEnd_toEndOf="@+id/viewPager"
+        app:layout_constraintTop_toTopOf="@+id/viewPager" />
+
+    <TextView
+        android:id="@+id/txtPet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Pets"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPets"
+        app:layout_constraintEnd_toEndOf="@+id/btnPets"
+        app:layout_constraintStart_toStartOf="@+id/btnPets"
+        app:layout_constraintTop_toTopOf="@+id/btnPets" />
+
+    <ImageButton
+        android:id="@+id/btnServicos"
+        android:layout_width="156dp"
+        android:layout_height="113dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="16dp"
+        android:background="#F4A460"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager"
+        app:layout_constraintEnd_toEndOf="@+id/viewPager" />
+
+    <TextView
+        android:id="@+id/txtServicos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Serviços"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnServicos"
+        app:layout_constraintEnd_toEndOf="@+id/btnServicos"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="@+id/btnServicos"
+        app:layout_constraintTop_toTopOf="@+id/btnServicos"
+        app:layout_constraintVertical_bias="0.492" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="0dp"
+        android:layout_height="267dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNome" />
+
+    <TextView
+        android:id="@+id/txtVisiteSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="72dp"
+        android:text="Clique aqui"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="e visite o nosso Site"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txtVisiteSite"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtNome"
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="240dp"
+        android:text="Usuario"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
