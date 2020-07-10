@@ -30,14 +30,14 @@ public class Inicio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_inicio );
-        btnCadastro = findViewById ( R.id.btnCadastrar );
+        btnCadastro = findViewById ( R.id.cadastro_botao_registrar);
         btnLogin = findViewById ( R.id.btnLogin );
-        vcpf =  findViewById ( R.id.txtCpf );
-        vsenha = findViewById ( R.id.txtPassword );
+        vcpf =  findViewById ( R.id.cadastro_cpf);
+        vsenha = findViewById ( R.id.cadastro_password);
+
         cu = new ControlaUsuario ( getApplicationContext () );
         cp = new ControlaPessoa ( getApplicationContext () );
 
-       criaAdmin();
 
         btnCadastro.setOnClickListener ( new View.OnClickListener (){
             @Override
@@ -102,24 +102,9 @@ public class Inicio extends AppCompatActivity {
         Toast.makeText ( this,texto,Toast.LENGTH_SHORT).show ();
     }
 
-    /**O Campo a seguir cria as tabelas necessárias a aplicação e o usuário administrador caso ele ainda não exista
-     * geralmente é realizado na primeira vez que a aplicação é executada no
-     * dispositivo
-     */
-    public void criaAdmin(){
-
-        if(cu.criaTabelaUsuario ()){
-          //  Toast.makeText ( this,"Tabela USUARIO criada com sucesso!",Toast.LENGTH_SHORT).show ();
-            Usuario user = new Usuario ( 123456,"admin",1);
-            Usuario validado = cu.consultarUsuario ( user );
-
-            if(validado.getCpf ()!=user.getCpf () )  {
-                cu.inserirUsuario (user);
-            //    Toast.makeText ( this, "Usuario admin criado", Toast.LENGTH_SHORT ).show ();}
-            //else {
-                //Toast.makeText ( this, "Usuario admin ja existe", Toast.LENGTH_SHORT ).show ();
-            }
-
-        }
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+        System.exit(0);
     }
 }

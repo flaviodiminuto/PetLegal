@@ -32,7 +32,8 @@ public class ListaUsuarios extends AppCompatActivity {
         cu = new ControlaUsuario ( getApplicationContext () );
         cp = new ControlaPessoa ( getApplicationContext () );
 
-        listaUsuariosListView = findViewById ( R.id.listaUsuarioListView  );
+        //todo - substituir por reciclerview
+        // listaUsuariosListView = findViewById ( R.id.listaUsuarioListView  );
 
 
         listaUsuarios ();
