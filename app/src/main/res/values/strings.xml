@@ -8,6 +8,12 @@
     <string name="tab_text_3">Tab 3</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="bem_vindo_ao_pet_legal">Bem vindo ao Pet Legal</string>
+    <string name="digite_seu_cpf_aqui">Digite seu CPF aqui</string>
+    <string name="digite_sua_senha">Digite sua senha</string>
+    <string name="confirme_a_senha">Confirme a senha</string>
+    <string name="registrar">Registrar</string>
+    <string name="entrar">Entrar</string>
     <string-array name="cores">
         <item> ----</item>
         <item>Preto e branco</item>

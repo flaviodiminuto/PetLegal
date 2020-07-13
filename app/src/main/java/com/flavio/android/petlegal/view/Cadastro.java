@@ -2,13 +2,18 @@ package com.flavio.android.petlegal.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.flavio.android.petlegal.R;
 import com.flavio.android.petlegal.controll.ControllerLogin;
 import com.flavio.android.petlegal.model.Login;
+import com.flavio.android.petlegal.util.DoneOptionUtil;
+import com.flavio.android.petlegal.util.MaskEditUtil;
 import com.flavio.android.petlegal.util.SendMessage;
 
 public class Cadastro extends AppCompatActivity {
@@ -23,18 +28,14 @@ public class Cadastro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         iniciarCampos();
+
+        configurarCampoCPF();
         configurarBotaoRegistrar();
+        DoneOptionUtil.configurarDone(this.campo_confirma_senha,botao_registrar);
     }
 
-    private void configurarBotaoRegistrar() {
-        botao_registrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(cadastrar()) {
-                    onBackPressed();
-                }
-            }
-        });
+    private void configurarCampoCPF() {
+        this.campo_cpf.addTextChangedListener(MaskEditUtil.mask(this.campo_cpf,MaskEditUtil.FORMAT_CPF));
     }
 
     private boolean cadastrar() {
@@ -67,21 +68,35 @@ public class Cadastro extends AppCompatActivity {
     }
 
     private boolean validaCPF() {
-        try {
-            Integer.parseInt(campo_cpf.getText().toString());
-            return true;
-        }catch (NumberFormatException e){
-        }
-        SendMessage.toastLong(this,"Adicione um CPF válido!");
+        String cpf = MaskEditUtil.unmask(campo_cpf.getText().toString());
+        if (cpf.isEmpty()){
+            SendMessage.toastLong(this, "Preencha o campo CPF");
         return false;
+        }else if(cpf.length() == 11)
+            return true;
+        else{
+            SendMessage.toastLong(this, "Adicione um CPF válido!");
+            return false;
+        }
     }
 
     private void iniciarCampos(){
         setContentView ( R.layout.activity_cadastro );
         this.campo_cpf = findViewById(R.id.cadastro_cpf);
         this.campo_senha = findViewById(R.id.cadastro_password);
-        this.campo_confirma_senha = findViewById(R.id.cadastro_password_confirm);
         this.botao_registrar = findViewById(R.id.cadastro_botao_registrar);
+        this.campo_confirma_senha = findViewById(R.id.cadastro_password_confirm);
     }
 
+
+    private void configurarBotaoRegistrar() {
+        botao_registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(cadastrar()) {
+                    onBackPressed();
+                }
+            }
+        });
+    }
 }

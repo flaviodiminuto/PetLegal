@@ -4,42 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/petum"
+    android:background="@color/endblue"
     tools:context="com.flavio.android.petlegal.view.Inicio">
 
 
-    <Button
-        android:id="@+id/cadastro_botao_registrar"
-        android:layout_width="331dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Registrar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cadastro_password_confirm"
-        app:layout_constraintVertical_bias="0.208" />
-
-    <EditText
-        android:id="@+id/cadastro_password_confirm"
+    <TextView
+        android:id="@+id/lblCadastroUsuario"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/retanguloarredondado"
-        android:ems="10"
-        android:hint="Confirme a senha"
-        android:inputType="textPersonName"
+        android:layout_height="40dp"
+        android:text="@string/bem_vindo_ao_pet_legal"
         android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cadastro_password"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115"
+        tools:layout_editor_absoluteX="8dp" />
 
     <EditText
         android:id="@+id/cadastro_cpf"
@@ -50,29 +30,18 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/retanguloarredondado"
         android:ems="10"
-        android:hint="Digite seu CPF aqui"
+        android:hint="@string/digite_seu_cpf_aqui"
         android:inputType="number"
+        android:maxLength="14"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblCadastroUsuario"
-        app:layout_constraintVertical_bias="0.02" />
-
-    <TextView
-        android:id="@+id/lblCadastroUsuario"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:inputType="numberDecimal"
-        android:text="Bem vindo ao Pet Legal"
-        android:textAlignment="center"
-        android:textColor="#fff"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintVertical_bias="0.02"
+        android:autofillHints="CPF"
+        tools:targetApi="o" />
 
     <EditText
         android:id="@+id/cadastro_password"
@@ -83,14 +52,56 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/retanguloarredondado"
         android:ems="10"
-        android:hint="Digite sua senha"
-        android:inputType="textPersonName"
+        android:hint="@string/digite_sua_senha"
+        android:inputType="textPassword"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cadastro_cpf"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintVertical_bias="0.045"
+        android:maxLength="25"
+        android:autofillHints="Senha"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/cadastro_password_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/retanguloarredondado"
+        android:ems="10"
+        android:hint="@string/confirme_a_senha"
+        android:inputType="textPassword"
+        android:maxLength="25"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cadastro_password"
+        app:layout_constraintVertical_bias="0.071"
+        android:imeOptions="actionDone"
+        android:autofillHints="Confirma senha"
+        tools:targetApi="o" />
+
+    <Button
+        android:id="@+id/cadastro_botao_registrar"
+        android:layout_width="331dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#FF9800"
+        android:text="@string/registrar"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cadastro_password_confirm"
+        app:layout_constraintVertical_bias="0.208" />
 
 </android.support.constraint.ConstraintLayout>
