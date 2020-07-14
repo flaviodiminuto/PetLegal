@@ -74,7 +74,7 @@ public class Inicio extends AppCompatActivity {
 
     private void autenticar(){
         Login login = getLogin();
-        String token = getToken(login);
+        String token = getToken(login); 
         if(controllerLogin.valida(login) && !token.isEmpty()){
             redirecionaParaHome(token);
         }else{
