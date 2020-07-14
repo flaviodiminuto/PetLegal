@@ -1,55 +1,45 @@
 package com.flavio.android.petlegal.view;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
 
 import com.flavio.android.petlegal.R;
-import com.flavio.android.petlegal.controll.ControlaPessoa;
-import com.flavio.android.petlegal.controll.ControlaUsuario;
-import com.flavio.android.petlegal.model.Usuario;
+import com.flavio.android.petlegal.controll.ControllerLogin;
+import com.flavio.android.petlegal.model.Login;
 import com.flavio.android.petlegal.util.DoneOptionUtil;
 import com.flavio.android.petlegal.util.MaskEditUtil;
+import com.flavio.android.petlegal.util.SendMessage;
 
 public class Inicio extends AppCompatActivity {
 
-    int cpf;
-    String scpf;
-    EditText vcpf,vsenha; // cpf e senha do View
-    Button btnCadastro;
-    Button btnLogin;
-    ControlaUsuario cu;
-    ControlaPessoa cp;
+    EditText edit_text_cpf, edit_text_senha; // cpf e senha do View
+    Button botao_cadastrar;
+    Button botao_logar;
+    ControllerLogin controllerLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_inicio );
-        btnCadastro = findViewById ( R.id.cadastro_botao_registrar);
-        btnLogin = findViewById ( R.id.btnLogin );
-        vcpf =  findViewById ( R.id.cadastro_cpf);
-        vsenha = findViewById ( R.id.cadastro_password);
-
-        cu = new ControlaUsuario ( getApplicationContext () );
-        cp = new ControlaPessoa ( getApplicationContext () );
+        botao_cadastrar = findViewById ( R.id.cadastro_botao_registrar);
+        botao_logar = findViewById ( R.id.btnLogin );
+        edit_text_cpf =  findViewById ( R.id.cadastro_cpf);
+        edit_text_senha = findViewById ( R.id.cadastro_password);
+        controllerLogin = new ControllerLogin();
 
         configurarCampoCPF();
         conrigurarBotaoLogin();
         configurarBotaoCadastro();
-        DoneOptionUtil.configurarDone(this.vsenha,btnLogin);
+        DoneOptionUtil.configurarDone(this.edit_text_senha, botao_logar);
 
     }
 
     private void configurarBotaoCadastro() {
-        btnCadastro.setOnClickListener ( new View.OnClickListener (){
+        botao_cadastrar.setOnClickListener (new View.OnClickListener (){
             @Override
             public void onClick(View view) {
                 Intent it = new Intent ( Inicio.this, Cadastro.class );
@@ -59,62 +49,48 @@ public class Inicio extends AppCompatActivity {
     }
 
     private void conrigurarBotaoLogin() {
-        btnLogin.setOnClickListener ( new View.OnClickListener () {
+        botao_logar.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-                Usuario validado = validaUser ( sendUser () ) ;
-                if (sendUser ().getSenha ().equals ( validado.getSenha () )) {
-                    if (validado.getStatus ()==1) {
-                        validado = validaUser ( validado );
-                        if (validado.getTipo () == 1) {
-                            Intent it = new Intent ( Inicio.this, AdminTesteMVC.class );
-                            it.putExtra ( "cpf",validado.getCpf () );
-                            startActivity ( it );
-                        } else {
-                            Intent it = new Intent ( Inicio.this, User.class );
-                            it.putExtra ( "id",validado.getIdPessoa () );
-                            startActivity ( it );
-                        }
-                    }else
-                        sendMessage ( "Usuário inativo !" ); //Usuario inativo
-                } else
-                    sendMessage ( "Usuario ou senha incorretos" );
-
-
+                autenticar();
             }
         } );
     }
 
     private void configurarCampoCPF() {
-        this.vcpf.addTextChangedListener(MaskEditUtil.mask(this.vcpf,MaskEditUtil.FORMAT_CPF));
+        this.edit_text_cpf.addTextChangedListener(MaskEditUtil.mask(this.edit_text_cpf,MaskEditUtil.FORMAT_CPF));
     }
 
-    /**Aqui pegamos o conteúdo do txtCpf e mesmo que não tenha número trazemos um valor inteiro para a
-     * variável para que não gere erro de execução pois a variavel cpf vai esperar um valor que não pode ser NULL
-     */
-    public Usuario sendUser(){
-        Usuario user= new Usuario ();
-        scpf = vcpf.getText ().toString ();
-        //Preenche o campo cpf caso  o EditText não esteja vazio e seu conteúdo contenha números
-        if(!scpf.isEmpty () && scpf.matches ( "[0-9]{11}" )) {
-            cpf = Integer.parseInt ( scpf );
-        }else{
-            cpf =-1;
+    public Login getLogin(){
+        String cpf = MaskEditUtil.unmask(edit_text_cpf.getText ().toString());
+        String senha = edit_text_senha.getText ().toString ();
+
+        if(cpf.isEmpty () || cpf.matches ( "[0-9]{11}" )) {
+            cpf = "";
         }
-        String senha = vsenha.getText ().toString ();
 
-        user.setCpf ( cpf );
-        user.setSenha ( senha );
+        return new Login(cpf,senha);
+    }
 
-        return user;
+    private void autenticar(){
+        Login login = getLogin();
+        String token = getToken(login);
+        if(controllerLogin.valida(login) && !token.isEmpty()){
+            redirecionaParaHome(token);
+        }else{
+            SendMessage.toastLong(this,"Combinacao Login e senha incorreta!");
+        }
     }
-    public Usuario validaUser(Usuario user){
-        ControlaUsuario cu = new ControlaUsuario ( getApplicationContext () );
-        user = cu.consultarUsuario ( user );
-        return user;
+
+    private String getToken(Login login) {
+        //todo - - sistema de token
+        return "teste";
     }
-    public void sendMessage(String texto){
-        Toast.makeText ( this,texto,Toast.LENGTH_SHORT).show ();
+
+    private void redirecionaParaHome(String token){
+        Intent it = new Intent(this, Home.class);
+        it.putExtra("token", token);
+        startActivity(it);
     }
 
     @Override

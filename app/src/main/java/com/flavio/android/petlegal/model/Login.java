@@ -6,6 +6,8 @@ public class Login {
     String senha;
 
     public Login() {
+        cpf = "";
+        senha = "";
     }
 
     public Login(String cpf, String senha) {

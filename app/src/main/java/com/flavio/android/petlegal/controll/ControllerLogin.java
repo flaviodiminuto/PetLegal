@@ -3,19 +3,18 @@ package com.flavio.android.petlegal.controll;
 import com.flavio.android.petlegal.interfaces.UseCase;
 import com.flavio.android.petlegal.model.Login;
 import com.flavio.android.petlegal.model.LoginCadastro;
-import com.flavio.android.petlegal.model.Usuario;
 import com.flavio.android.petlegal.usecase.CadastrarLogin;
 
 public class ControllerLogin {
 
-    public Usuario autentica(Login login){
-        Usuario usuario = findLogin(login);
-        return usuario;
+    public boolean valida(Login login){
+        Login aux = findLogin(login);
+        return (aux != null && aux.getCpf().equals(login.getCpf()));
     }
 
-    private Usuario findLogin(Login login){
+    private Login findLogin(Login login){
         //todo - fazer a requisição para um servico que retorne o usuário
-        return new Usuario();
+        return new Login();
     }
 
     public boolean salvarLogin(Login usuario){
