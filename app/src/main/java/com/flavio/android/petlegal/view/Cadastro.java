@@ -18,11 +18,12 @@ import com.flavio.android.petlegal.util.SendMessage;
 
 public class Cadastro extends AppCompatActivity {
 
-    ControllerLogin controller = new ControllerLogin();
-    EditText campo_cpf;
-    EditText campo_senha;
-    EditText campo_confirma_senha;
-    Button botao_registrar;
+    private ControllerLogin controller = new ControllerLogin();
+    private EditText campo_cpf;
+    private EditText campo_senha;
+    private EditText campo_confirma_senha;
+    private Button botao_registrar;
+    private Button botao_cancelar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +32,18 @@ public class Cadastro extends AppCompatActivity {
 
         configurarCampoCPF();
         configurarBotaoRegistrar();
+        configurarBotaoCancelar();
         DoneOptionUtil.configurarDone(this.campo_confirma_senha,botao_registrar);
 
+    }
+
+    private void configurarBotaoCancelar() {
+        this.botao_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     private void configurarCampoCPF() {
@@ -74,6 +85,7 @@ public class Cadastro extends AppCompatActivity {
         this.campo_senha = findViewById(R.id.cadastro_password);
         this.botao_registrar = findViewById(R.id.cadastro_botao_registrar);
         this.campo_confirma_senha = findViewById(R.id.cadastro_password_confirm);
+        this.botao_cancelar = findViewById(R.id.cadastro_botao_cancelar);
     }
 
 

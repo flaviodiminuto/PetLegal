@@ -14,6 +14,7 @@
     <string name="confirme_a_senha">Confirme a senha</string>
     <string name="registrar">Registrar</string>
     <string name="entrar">Entrar</string>
+    <string name="cancelar">Cancelar</string>
     <string-array name="cores">
         <item> ----</item>
         <item>Preto e branco</item>
