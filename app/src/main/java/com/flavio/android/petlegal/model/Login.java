@@ -2,6 +2,7 @@ package com.flavio.android.petlegal.model;
 
 public class Login {
 
+    Long id;
     String cpf;
     String senha;
 
@@ -13,6 +14,14 @@ public class Login {
     public Login(String cpf, String senha) {
         this.cpf = cpf;
         this.senha = senha;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCpf() {

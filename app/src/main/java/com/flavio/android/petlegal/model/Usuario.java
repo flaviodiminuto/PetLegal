@@ -1,20 +1,5 @@
 package com.flavio.android.petlegal.model;
 
-/**
- * Created by Flávio on 24/05/2018.
- *
- * A classe usuário é o login e senha de acesso que cada pessoa utiliza
- * sendo que uma pessoa pode criar mais de um usuário porém um usuário pertence
- * somente a uma pessoa. Possui os campos, idPessoa que identifica a quem o usuario
- * pertence, login e senha não necessitam ser mais detalhados.
- * @param idPessoa
- * @param tipo
- * @param cpf
- * @param senha
- * @param status
- */
-
-
 public class Usuario {
 
     private int idPessoa;

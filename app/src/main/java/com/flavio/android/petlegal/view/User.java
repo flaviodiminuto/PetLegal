@@ -4,8 +4,6 @@ package com.flavio.android.petlegal.view;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,9 +16,6 @@ import com.flavio.android.petlegal.R;
 import com.flavio.android.petlegal.controll.ControlaPessoa;
 import com.flavio.android.petlegal.controll.ControlaUsuario;
 import com.flavio.android.petlegal.model.Pessoa;
-import com.flavio.android.petlegal.model.Usuario;
-
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 

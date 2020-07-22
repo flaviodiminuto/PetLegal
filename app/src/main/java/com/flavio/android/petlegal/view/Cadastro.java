@@ -2,23 +2,25 @@ package com.flavio.android.petlegal.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.flavio.android.petlegal.R;
 import com.flavio.android.petlegal.controll.ControllerLogin;
-import com.flavio.android.petlegal.interfaces.UseCase;
-import com.flavio.android.petlegal.model.Login;
 import com.flavio.android.petlegal.model.LoginCadastro;
-import com.flavio.android.petlegal.usecase.CadastrarLogin;
 import com.flavio.android.petlegal.util.DoneOptionUtil;
 import com.flavio.android.petlegal.util.MaskEditUtil;
 import com.flavio.android.petlegal.util.SendMessage;
 
-public class Cadastro extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private ControllerLogin controller = new ControllerLogin();
+public class Cadastro extends AppCompatActivity{
+
+    private ControllerLogin controller;
     private EditText campo_cpf;
     private EditText campo_senha;
     private EditText campo_confirma_senha;
@@ -29,6 +31,7 @@ public class Cadastro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         iniciarCampos();
+        this.controller = new ControllerLogin();
 
         configurarCampoCPF();
         configurarBotaoRegistrar();
@@ -93,17 +96,58 @@ public class Cadastro extends AppCompatActivity {
         botao_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(validaCampos())
-                    submeterCadastro();
+                if(validaCampos()) {
+                    sendMessage("Realizando o cadastro");
+                    Call<Void> call = submeterCadastro();
+                    avaliarRequisicao(call);
+                }
             }
         });
     }
 
-    private void submeterCadastro(){
+    private void avaliarRequisicao(Call<Void> call) {
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                int code = response.code();
+                Log.e("Response", "Sttus = "+ code);
+                switch (code){
+                    case 201:
+                        sendMessage("Cadastro realizado com sucesso");
+                        redirecionaParaHome();
+                        break;
+                    case 406:
+                        sendMessage("CPF já cadastrado");
+                        break;
+                    case 500 :
+                        sendMessage("Serviço indisponível, tente mais tarde");
+                        break;
+                    default:
+                        sendMessage("Queremos muito te cadastrar mas não estamos conseguindo");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("Response", "Falha durante o cadastro");
+            }
+        });
+    }
+
+    private void redirecionaParaHome() {
+        onBackPressed();
+    }
+
+
+    private Call<Void> submeterCadastro(){
         LoginCadastro cadastro= new LoginCadastro(
                 this.campo_cpf.getText().toString(),
                 this.campo_senha.getText().toString(),
                 this.campo_confirma_senha.getText().toString());
-        controller.cadastrar(cadastro );
+        return controller.cadastrar(cadastro );
+    }
+
+    private void sendMessage(String message){
+        SendMessage.toastLong(this,message);
     }
 }

@@ -6,7 +6,6 @@ import android.database.Cursor;
 
 import com.flavio.android.petlegal.dao.Dao;
 import com.flavio.android.petlegal.model.Telefone;
-import com.flavio.android.petlegal.view.User;
 
 import java.util.ArrayList;
 import java.util.List;

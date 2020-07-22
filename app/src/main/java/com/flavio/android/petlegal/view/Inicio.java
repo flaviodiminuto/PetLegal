@@ -12,9 +12,8 @@ import com.flavio.android.petlegal.controll.ControllerLogin;
 import com.flavio.android.petlegal.model.Login;
 import com.flavio.android.petlegal.util.DoneOptionUtil;
 import com.flavio.android.petlegal.util.MaskEditUtil;
-import com.flavio.android.petlegal.util.SendMessage;
 
-public class Inicio extends AppCompatActivity {
+public class Inicio extends AppCompatActivity{
 
     EditText edit_text_cpf, edit_text_senha; // cpf e senha do View
     Button botao_cadastrar;
@@ -68,18 +67,14 @@ public class Inicio extends AppCompatActivity {
         if(cpf.isEmpty () || cpf.matches ( "[0-9]{11}" )) {
             cpf = "";
         }
-
         return new Login(cpf,senha);
     }
 
     private void autenticar(){
         Login login = getLogin();
         String token = getToken(login);
-        if(controllerLogin.valida(login) && !token.isEmpty()){
-            redirecionaParaHome(token);
-        }else{
-            SendMessage.toastLong(this,"Combinacao Login e senha incorreta!");
-        }
+        //todo - Autenticar com o ControllerCredencial
+//        controllerLogin.valida(login);
     }
 
     private String getToken(Login login) {
@@ -88,9 +83,6 @@ public class Inicio extends AppCompatActivity {
     }
 
     private void redirecionaParaHome(String token){
-        Intent it = new Intent(this, Home.class);
-        it.putExtra("token", token);
-        startActivity(it);
     }
 
     @Override
