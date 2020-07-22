@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PetLegal.iml" filepath="$PROJECT_DIR$/PetLegal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PetLegal-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PetLegal-app.iml" group="PetLegal/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Projetos-PetLegal.iml" filepath="$PROJECT_DIR$/.idea/modules/Projetos-PetLegal.iml" group="PetLegal" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
