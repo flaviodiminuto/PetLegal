@@ -6,7 +6,7 @@
     <color name ="primaryDark">#292b3d</color>
     <color name ="graylight">#fafafa </color>
     <color name ="startblue"> #09c6df</color>
-    <color name ="endblue">#0bcce6</color>
+    <color name ="endblue">#673AB7</color>
     <color name = "magenta">#8B008B</color>
     <color name = "violeta">#EE82EE</color>
 </resources>

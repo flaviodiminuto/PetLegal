@@ -4,105 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/petum"
+    android:background="#673AB7"
     tools:context="com.flavio.android.petlegal.view.Inicio">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="343dp"
-        android:layout_height="407dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="460dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
         android:background="@drawable/retangulo"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06999999">
+        app:layout_constraintVertical_bias="0.289">
 
         <TextView
             android:id="@+id/lblPetLegal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bem Vindo!"
+            android:layout_marginTop="32dp"
+            android:text="@string/bem_vindo_ao_pet_legal"
             android:textAlignment="center"
             android:textColor="#fff"
-            android:textSize="18sp" />
-
-        <EditText
-            android:id="@+id/txtCpf"
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/retanguloarredondado"
-            android:ems="10"
-            android:hint="Digite o CPF"
-            android:inputType="number"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="343dp" />
 
         <EditText
-            android:id="@+id/txtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:id="@+id/cadastro_cpf"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="22dp"
             android:background="@drawable/retanguloarredondado"
             android:ems="10"
-            android:hint="Digite a senha"
+            android:maxLength="14"
+            android:hint="@string/digite_seu_cpf_aqui"
+            android:inputType="number"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblPetLegal"
+            tools:layout_conversion_absoluteHeight="62dp"
+            tools:layout_conversion_absoluteWidth="327dp"
+            android:autofillHints="CPF"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/cadastro_password"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/retanguloarredondado"
+            android:ems="10"
+            android:hint="@string/digite_sua_senha"
             android:inputType="textPassword"
             android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtCpf"
-            app:layout_constraintVertical_bias="0.019" />
+            app:layout_constraintTop_toBottomOf="@+id/cadastro_cpf"
+            tools:layout_conversion_absoluteHeight="64dp"
+            tools:layout_conversion_absoluteWidth="327dp"
+            android:imeOptions="actionDone"
+            android:autofillHints="Senha"
+            tools:targetApi="o" />
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Login"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="52dp"
+            android:background="#FF9800"
+            android:text="@string/entrar"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.971"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPassword"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/cadastro_password"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="88dp" />
 
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
     <Button
-        android:id="@+id/btnCadastrar"
-        android:layout_width="152dp"
+        android:id="@+id/cadastro_botao_registrar"
+        android:layout_width="0dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Registrar"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/cardview_shadow_end_color"
+        android:text="@string/registrar"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.764" />
+        app:layout_constraintVertical_bias="0.159" />
 
 </android.support.constraint.ConstraintLayout>
