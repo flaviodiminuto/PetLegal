@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.flavio.android.petlegal.R;
+import com.flavio.android.petlegal.controll.ControllerCredencial;
 import com.flavio.android.petlegal.controll.ControllerLogin;
 import com.flavio.android.petlegal.model.Login;
 import com.flavio.android.petlegal.util.DoneOptionUtil;
@@ -29,6 +30,8 @@ public class Inicio extends AppCompatActivity{
         edit_text_cpf =  findViewById ( R.id.cadastro_cpf);
         edit_text_senha = findViewById ( R.id.cadastro_password);
         controllerLogin = new ControllerLogin();
+        ControllerCredencial controlToken = new ControllerCredencial(this);
+        controlToken.criarTabelaCredencial();
 
         configurarCampoCPF();
         conrigurarBotaoLogin();
