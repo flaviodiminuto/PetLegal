@@ -110,7 +110,7 @@ public class Cadastro extends AppCompatActivity{
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 int code = response.code();
-                Log.e("Response", "Sttus = "+ code);
+                Log.i("response", "Sttus = "+ code);
                 switch (code){
                     case 201:
                         sendMessage("Cadastro realizado com sucesso");
@@ -129,7 +129,7 @@ public class Cadastro extends AppCompatActivity{
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.e("Response", "Falha durante o cadastro");
+                sendMessage("Serviço indisponível, tente mais tarde");
             }
         });
     }
